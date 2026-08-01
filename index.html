@@ -10,7 +10,7 @@
 <meta property="og:description" content="Auto Peças, Promoções e o Canal oficial de ofertas. Entre agora e não perca nenhuma novidade!">
 <meta property="og:type" content="website">
 <style>
-:root{--orange:#F15A22;--yellow:#F7A600;--ink:#241a12;--muted:#7a6a5d}
+:root{--orange:#F15A22;--yellow:#F7A600;--ink:#241a12}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);min-height:100vh;background:radial-gradient(1100px 560px at 50% -8%,rgba(255,192,46,.5),transparent 60%),linear-gradient(165deg,#F15A22 0%,#F7811A 45%,#F7A600 100%);display:flex;justify-content:center;padding:26px 18px 42px}
 .wrap{width:100%;max-width:462px}
@@ -21,34 +21,60 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 .hero h1{font-size:24px;font-weight:800;line-height:1.22;margin-bottom:8px}
 .hero p{font-size:14.5px;line-height:1.5;opacity:.97;max-width:360px;margin:0 auto}
 .cards{display:flex;flex-direction:column;gap:16px}
-.card{position:relative;border-radius:22px;padding:20px;overflow:hidden;box-shadow:0 16px 38px rgba(20,10,0,.28);text-decoration:none;color:#fff;display:block;transition:transform .14s ease, box-shadow .2s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 22px 46px rgba(20,10,0,.34)}
+.card{position:relative;border-radius:22px;padding:20px;overflow:hidden;box-shadow:0 16px 38px rgba(20,10,0,.30);text-decoration:none;color:#fff;display:block;isolation:isolate;transition:transform .14s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 24px 50px rgba(20,10,0,.4)}
 .card:active{transform:translateY(-1px)}
-.card::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.10)}
-.c-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
-.ic{flex:0 0 auto;width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.18);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25)}
-.ic svg{width:30px;height:30px}
+.deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;border-radius:22px}
+.wm{position:absolute;fill:#fff}
+.c-top{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
+.ic{position:relative;flex:0 0 auto;width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.28)}
+.ic>svg{width:32px;height:32px;fill:#fff;position:relative;z-index:2}
 .c-head{flex:1 1 auto;min-width:0}
-.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:999px;margin-bottom:5px}
-.c-title{font-size:19px;font-weight:800;line-height:1.15}
-.c-desc{position:relative;z-index:1;font-size:13.5px;line-height:1.45;opacity:.95;margin:13px 2px 16px}
-.btn{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:9px;background:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.14)}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:999px;margin-bottom:6px}
+.c-title{font-size:20px;font-weight:800;line-height:1.15;display:flex;align-items:center;gap:7px}
+.vf{width:20px;height:20px;flex:0 0 auto}
+.c-desc{position:relative;z-index:2;font-size:13.5px;line-height:1.45;opacity:.96;margin:14px 2px 16px;max-width:88%}
+.btn{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:9px;background:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:13px;box-shadow:0 6px 16px rgba(0,0,0,.16)}
 .btn svg{width:18px;height:18px}
 .btn .arw{margin-left:2px;transition:transform .15s ease}
-.card:hover .btn .arw{transform:translateX(3px)}
-/* Tema Auto Peças */
-.autopecas{background:linear-gradient(140deg,#243049 0%,#33456e 60%,#3d5488 100%)}
-.autopecas .btn{color:#2c3e63}
-/* Tema Ofertas/Promoções */
+.card:hover .btn .arw{transform:translateX(4px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}
+@keyframes tw{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:.95;transform:scale(1.15)}}
+
+/* ===== AUTO PECAS — oficina / industrial ===== */
+.autopecas{background:linear-gradient(140deg,#1c2536 0%,#2d3d61 55%,#3a4f80 100%)}
+.autopecas .tape{position:absolute;top:0;left:0;right:0;height:9px;background:repeating-linear-gradient(45deg,#F7B500 0 13px,#161b28 13px 26px);opacity:.92}
+.autopecas .grid{position:absolute;inset:0;background-image:repeating-linear-gradient(118deg,rgba(255,255,255,.045) 0 2px,transparent 2px 10px)}
+.autopecas .wm-g1{width:158px;height:158px;right:-30px;bottom:-34px;opacity:.13;animation:spin 22s linear infinite}
+.autopecas .wm-g2{width:86px;height:86px;right:104px;bottom:30px;opacity:.10;animation:spin 15s linear infinite reverse}
+.autopecas .ic{background:rgba(247,181,0,.16);border-color:rgba(247,181,0,.4)}
+.autopecas .ic>svg{fill:#FFC63A;animation:spin 14s linear infinite}
+.autopecas .btn{color:#26344f}
+
+/* ===== OFERTAS — promocao / desconto ===== */
 .ofertas{background:linear-gradient(140deg,#E11D36 0%,#F1382B 55%,#F15A22 100%)}
-.ofertas .btn{color:#d92038}
-/* Tema Canal */
+.ofertas .rays{position:absolute;width:360px;height:360px;left:-40px;top:-150px;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,255,255,.16) 0 7deg,transparent 7deg 20deg);opacity:.55}
+.ofertas .wm-tag{width:150px;height:150px;right:-22px;bottom:-28px;opacity:.14;transform:rotate(-12deg)}
+.ofertas .ribbon{position:absolute;top:16px;right:-42px;transform:rotate(45deg);background:#fff;color:#E11D36;font-weight:800;font-size:11px;letter-spacing:1.5px;padding:5px 46px;box-shadow:0 3px 8px rgba(0,0,0,.25);z-index:3}
+.ofertas .spark{position:absolute;color:#fff;font-size:15px;z-index:1;animation:tw 2.6s infinite}
+.ofertas .s1{left:20px;top:70px;animation-delay:.1s}
+.ofertas .s2{left:60px;top:120px;font-size:11px;animation-delay:1.1s}
+.ofertas .s3{right:120px;top:26px;font-size:12px;animation-delay:.7s}
+.ofertas .ic{background:rgba(255,255,255,.2)}
+.ofertas .btn{color:#d81f38}
+
+/* ===== CANAL — transmissao / oficial ===== */
 .canal{background:linear-gradient(140deg,#075E54 0%,#128C7E 55%,#25D366 100%)}
+.canal .wm-m{width:152px;height:152px;right:-20px;bottom:-26px;opacity:.14}
+.canal .waves{position:absolute;right:-30px;top:-30px;width:180px;height:180px;background:radial-gradient(circle,transparent 34%,rgba(255,255,255,.10) 35% 37%,transparent 38%),radial-gradient(circle,transparent 46%,rgba(255,255,255,.08) 47% 49%,transparent 50%),radial-gradient(circle,transparent 58%,rgba(255,255,255,.06) 59% 61%,transparent 62%)}
+.canal .ic::before,.canal .ic::after{content:"";position:absolute;inset:-2px;border-radius:18px;border:2px solid rgba(255,255,255,.6);animation:ring 2.8s ease-out infinite}
+.canal .ic::after{animation-delay:1.4s}
 .canal .btn{color:#0c7d64}
 .foot{text-align:center;margin-top:24px;color:rgba(255,255,255,.96);font-size:12.5px;line-height:1.6;text-shadow:0 1px 2px rgba(120,40,0,.25)}
 .foot b{color:#fff}
-.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:6px;animation:pulse 1.8s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:6px;animation:pl 1.8s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 </style>
 </head>
 <body>
@@ -63,30 +89,46 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 <div class="cards">
 
 <a class="card autopecas" href="https://chat.whatsapp.com/ImNSc83oXRW7n1ao2WvWCZ?s=cl&amp;p=i&amp;ilr=2" target="_blank" rel="noopener">
+<span class="deco">
+<span class="grid"></span>
+<span class="tape"></span>
+<svg class="wm wm-g1" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+<svg class="wm wm-g2" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+</span>
 <div class="c-top">
-<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a1.5 1.5 0 0 0 2.1 2.1l6-6a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.1-.6-.6-2.1 2.1-2.1z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></span>
 <div class="c-head"><span class="tag">Grupo</span><div class="c-title">Auto Peças</div></div>
 </div>
 <p class="c-desc">Peças, acessórios e componentes automotivos com preço de atacado. Tire dúvidas e garanta o que precisa para seu veículo.</p>
-<span class="btn">Entrar no grupo <span class="arw">→</span></span>
+<span class="btn"><svg viewBox="0 0 24 24" fill="#26344f"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Entrar no grupo <span class="arw">→</span></span>
 </a>
 
 <a class="card ofertas" href="https://chat.whatsapp.com/J149bRZfzv4B1v9MQram5z?s=cl&amp;p=i&amp;ilr=2" target="_blank" rel="noopener">
+<span class="deco">
+<span class="rays"></span>
+<svg class="wm wm-tag" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+<span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✦</span>
+</span>
+<span class="ribbon">OFERTAS</span>
 <div class="c-top">
-<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12.5 12.5 20a1.6 1.6 0 0 1-2.3 0l-6.2-6.2a1.6 1.6 0 0 1-.5-1.1V5.2A1.6 1.6 0 0 1 5.2 3.5h7.5c.4 0 .8.2 1.1.5L20 10.2a1.6 1.6 0 0 1 0 2.3z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.2" cy="8.2" r="1.4" fill="#fff"/></svg></span>
+<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg></span>
 <div class="c-head"><span class="tag">Grupo</span><div class="c-title">Ofertas &amp; Promoções</div></div>
 </div>
 <p class="c-desc">As melhores promoções, descontos relâmpago e achados do dia. Entre e não deixe nenhuma oferta passar!</p>
-<span class="btn">Entrar no grupo <span class="arw">→</span></span>
+<span class="btn"><svg viewBox="0 0 24 24" fill="#d81f38"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> Entrar no grupo <span class="arw">→</span></span>
 </a>
 
 <a class="card canal" href="https://whatsapp.com/channel/0029VbCr2WyGpLHJQrfIMs2I" target="_blank" rel="noopener">
+<span class="deco">
+<span class="waves"></span>
+<svg class="wm wm-m" viewBox="0 0 24 24"><path d="M18 11v2h4v-2h-4zm-1.5 6.6c.71.53 1.64 1.24 2.4 1.8.8-1.07 1.6-2.14 2.4-3.2-.76-.57-1.69-1.27-2.4-1.8-.8 1.07-1.6 2.13-2.4 3.2zM20.9 6c-.8-1.07-1.6-2.13-2.4-3.2-.76.57-1.69 1.27-2.4 1.8.8 1.07 1.6 2.14 2.4 3.2.71-.53 1.64-1.23 2.4-1.8zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"/></svg>
+</span>
 <div class="c-top">
-<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4a1 1 0 0 0 1 1h2l4 3.5V5.5L7 9H5a1 1 0 0 0-1 1z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8 8 0 0 1 0 12" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-<div class="c-head"><span class="tag">Canal Oficial</span><div class="c-title">Shopbox Colombo</div></div>
+<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 11v2h4v-2h-4zm-1.5 6.6c.71.53 1.64 1.24 2.4 1.8.8-1.07 1.6-2.14 2.4-3.2-.76-.57-1.69-1.27-2.4-1.8-.8 1.07-1.6 2.13-2.4 3.2zM20.9 6c-.8-1.07-1.6-2.13-2.4-3.2-.76.57-1.69 1.27-2.4 1.8.8 1.07 1.6 2.14 2.4 3.2.71-.53 1.64-1.23 2.4-1.8zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"/></svg></span>
+<div class="c-head"><span class="tag">Canal Oficial</span><div class="c-title">Shopbox Colombo <svg class="vf" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.3 1.7 2.9-.2 1 2.7 2.5 1.4-.9 2.8.9 2.8-2.5 1.4-1 2.7-2.9-.2L12 22l-2.3-1.7-2.9.2-1-2.7L3.3 14.6l.9-2.8-.9-2.8 2.5-1.4 1-2.7 2.9.2L12 2z" fill="#34B7F1"/><path d="M9.4 12.4l1.8 1.8 3.5-3.7" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
 </div>
 <p class="c-desc">O canal oficial de ofertas gerais da ShopBox. Siga para acompanhar todos os lançamentos e novidades num só lugar.</p>
-<span class="btn">Seguir o canal <span class="arw">→</span></span>
+<span class="btn"><svg viewBox="0 0 24 24" fill="#0c7d64"><path d="M18 11v2h4v-2h-4zm-1.5 6.6c.71.53 1.64 1.24 2.4 1.8.8-1.07 1.6-2.14 2.4-3.2-.76-.57-1.69-1.27-2.4-1.8-.8 1.07-1.6 2.13-2.4 3.2zM20.9 6c-.8-1.07-1.6-2.13-2.4-3.2-.76.57-1.69 1.27-2.4 1.8.8 1.07 1.6 2.14 2.4 3.2.71-.53 1.64-1.23 2.4-1.8zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"/></svg> Seguir o canal <span class="arw">→</span></span>
 </a>
 
 </div>

@@ -1,0 +1,7 @@
+{
+  "name": "shopbox-grupos",
+  "private": true,
+  "scripts": {
+    "test": "node tests/security-check.mjs"
+  }
+}
